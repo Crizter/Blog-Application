@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <h2>User Profile</h2>
+    <p id ='username'>Username : <%= user.username %></p>
+    <p id = 'email' >Email : <%= user.email %></p>
+    <button id="logoutButton">Logout</button>
+    <script>
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", async () => {
+          const response = await fetch("/users/logout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+
+            },
+          });
+          const result = await response.json();
+          if (response.ok) {
+            // Remove the JWT token from localStorage
+            localStorage.removeItem("token");
+            // Redirect to the login page
+            window.location.href = "/login";
+          } else {
+            alert(result.message || "LOGOUT FAILED");
+          }
+        });
+         // Check token and redirect if not found
+         if (!localStorage.getItem('token')) {
+            window.location.href = '/users/login';
+        }
+       
+
+    </script>
+  </body>
+</html>

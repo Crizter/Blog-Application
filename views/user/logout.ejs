@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Logout </title>
+</head>
+<body>
+    <div>
+        <button>Change Username</button>
+        <button>Change Password</button>
+        <button id = 'logoutButton'>Logout</button>
+
+    </div>
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', async () => { 
+            // remove the token from localstorage
+            await fetch('/logout', {method : 'POST'})
+            localStorage.removeItem('token');
+
+            // move to login page 
+            window.location.href = 'users/login' ; 
+
+        });
+
+    </script>
+</body>
+</html>

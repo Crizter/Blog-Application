@@ -1,0 +1,42 @@
+<%- include('partials/header', { title: 'All Blogs' }) %>
+
+    <div class='bg-black h-screen text-white flex flex-col items-center justify-center'>
+        <div class='h-auto w-96 border-2 border-white p-8 flex justify-center text-pink-500'>
+            <form id='updateBlog' method='POST' action="" class="space-y-6 w-full">
+                <h1 class="text-3xl font-bold text-center mb-6">Update Your Blog</h1>
+                <div class='flex flex-col'>
+                    <label for="title" class="text-xl font-semibold mb-2">Title</label>
+                    <input type="text" id="title" name="title" value="<%= blog.title %>" class="p-2 border border-gray-300 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-500">
+                </div>
+                <div class='flex flex-col'>
+                    <label for="description" class="text-xl font-semibold mb-2">Describe your blog</label>
+                    <textarea id="description" name="description" class="p-2 border border-gray-300 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-500 h-24"><%= blog.description %></textarea>
+                </div>
+                <div class='flex flex-col'>
+                    <label for="content" class="text-xl font-semibold mb-2">Content</label>
+                    <textarea id="content" name="content" class="p-2 border border-gray-300 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-500 h-32"><%= blog.content %></textarea>
+                </div>
+                <div class="flex justify-between">
+                    <button id='saveChange' type="submit" class="bg-pink-500 text-white font-semibold p-2 rounded hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 w-1/2 mr-2">
+                        Save Changes
+                    </button>
+                    <button id='undoChange' onclick="window.history.back()" type="button" class="bg-gray-500 text-white font-semibold p-2 rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 w-1/2 ml-2">
+                        Go Back
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('saveChange').addEventListener('click', (event) => {
+            event.preventDefault();
+            if (confirm('Do you want to save changes?')) {
+                document.getElementById('updateBlog').submit();
+            } else {
+                alert('Changes not saved');
+            }
+        });
+    </script>
+
+<%- include('partials/footer') %>

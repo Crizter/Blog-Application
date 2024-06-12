@@ -1,0 +1,41 @@
+<%- include('partials/header', { title: 'All Blogs' }) %>
+
+<div class="bg-black text-pink-500 h-screen flex items-center justify-center">
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
+        <div class="flex flex-col items-center">
+            <h1 class="text-white font-bold text-5xl mb-4 text-center"><%= blog.title %></h1>
+            <p class="text-2xl text-gray-300 mb-4 text-center"><%= blog.description %></p>
+            <p class="text-lg text-white text-center"><%= blog.content %></p>
+        </div>
+        
+        <div class="flex justify-center space-x-8 mt-6">
+            <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" 
+                    id="updateBlog" 
+                    onclick="updateBlogButton()">
+                Update Blog
+            </button>
+            
+            <form id="deleteBlogForm" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" style="display: none"></form>
+            
+            <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" 
+                    id="deleteBlog" 
+                    onclick="deleteBlogButton()">
+                Delete Blog
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const updateBlogButton = () => {
+            window.location.href = `/blogs/<%= blog._id %>/update`;
+        };
+
+        const deleteBlogButton = () => {
+            if (confirm("Are you sure you want to delete this blog?")) {
+                document.getElementById("deleteBlogForm").submit();
+            }
+        };
+    </script>
+</div>
+<%- include('partials/footer') %>
+</html>

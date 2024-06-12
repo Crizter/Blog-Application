@@ -1,0 +1,45 @@
+{
+  "name": "blog-application",
+  "version": "1.0.0",
+  "description": "A blog application for posting your daily blogs.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss public/tailwind.css -o public/style.css",
+    "watch:css": "postcss public/tailwind.css -o public/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crizter/Blog-Application.git"
+  },
+  "author": "Harsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crizter/Blog-Application/issues"
+  },
+  "homepage": "https://github.com/Crizter/Blog-Application#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.4.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "postcss-cli": "^11.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
+  }
+}

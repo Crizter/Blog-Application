@@ -1,0 +1,63 @@
+### Create a new blog
+### Create Blog 1
+POST http://localhost:8002/blogs/create
+Content-Type: application/json
+
+{
+  "title": "First Blog",
+  "description": "Description of the first blog",
+  "content": "Content of the first blog"
+}
+
+###
+
+### Create Blog 2
+POST http://localhost:8002/blogs/create
+Content-Type: application/json
+
+{
+  "title": "Second Blog",
+  "description": "Description of the second blog",
+  "content": "Content of the second blog"
+}
+
+###
+
+### Create Blog 3
+POST http://localhost:8002/blogs/create
+Content-Type: application/json
+
+{
+  "title": "Third Blog",
+  "description": "Description of the third blog",
+  "content": "Content of the third blog"
+}
+###
+
+### Get all blogs
+GET http://localhost:8002/blogs
+
+###
+
+### Get a single blog by ID
+# Replace {id} with the actual ID of a blog from the previous request
+GET http://localhost:8002/blogs/66604243d1074d6caf41b8f5
+
+###
+
+### Update a blog by ID
+# Replace {id} with the actual ID of a blog from the previous request
+PUT http://localhost:8002/blogs/66604243d1074d6caf41b8f5
+Content-Type: application/json
+
+{
+  "title": "wow Blog Title",
+  "description": "Updated description of the blog",
+  "content": "Updated content of the blog"
+}
+
+###
+
+### Delete a blog by ID
+# Replace {id} with the actual ID of a blog from the previous request
+DELETE http://localhost:8002/blogs/
