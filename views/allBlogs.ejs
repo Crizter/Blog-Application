@@ -1,20 +1,26 @@
 <%- include('partials/header', { title: 'All Blogs' }) %>
 
-<div class="flex justify-center items-center flex-col">
-  <h1 class="text-5xl font-extrabold text-pink-500 mb-8">ALL BLOGS</h1>
-  <button class="mt-4 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800" onclick="redirectToCreateBlog()">
-    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+<div class="flex justify-center items-center flex-col bg-gray-900 min-h-screen py-8">
+  <h1 class="text-5xl font-extrabold text-teal-400 mb-8">Home</h1>
+  
+  <button class="mt-4 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-100 rounded-lg group bg-gradient-to-br from-teal-500 to-cyan-500 group-hover:from-teal-400 group-hover:to-cyan-400 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-900" onclick="redirectToCreateBlog()">
+    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 dark:bg-gray-800 rounded-md group-hover:bg-opacity-0">
       Create a blog post
     </span>
   </button>
+
+  <!-- Scroll down arrow animation -->
+  <div class="scroll-arrow mt-8">
+    <span class="arrow"></span>
+  </div>
 </div>
 
-<div class="blog-list p-6 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<div class="blog-list p-6 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-gray-900">
   <% blogs.forEach(blog => { %>
-    <div class="blog-item text-white bg-gray-800 border border-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer" id="<%= blog._id %>">
-      <h3 class="text-2xl font-bold mb-2 text-center"><%= blog.title %></h3>
+    <div class="blog-item text-gray-300 bg-gray-800 border border-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer" id="<%= blog._id %>">
+      <h3 class="text-2xl font-bold mb-2 text-center text-teal-300"><%= blog.title %></h3>
       <p class="text-gray-400 text-lg mb-4 text-center"><%= blog.description %></p>
-      <p class="text-pink-500 text-sm text-center"><%= blog.content %></p>
+      <p class="text-teal-500 text-sm text-center"><%= blog.content %></p>
     </div>
   <% }); %>
 </div>
@@ -32,3 +38,35 @@
 </script>
 
 <%- include('partials/footer') %>
+
+<!-- CSS for the scroll down arrow -->
+<style>
+  .scroll-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .scroll-arrow .arrow {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-right: 5px solid #00ffff; 
+    border-bottom: 5px solid #00ffff;
+    transform: rotate(45deg); /* Rotating the div to make an arrow pointing downwards */
+    animation: scroll 1.5s infinite ease-in-out;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateY(0) rotate(45deg);
+    }
+    50% {
+      transform: translateY(10px) rotate(45deg);
+    }
+    100% {
+      transform: translateY(0) rotate(45deg);
+    }
+  }
+</style>
